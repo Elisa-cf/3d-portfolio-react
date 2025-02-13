@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/fiber": "^8.17.14",
     "@tailwindcss/postcss": "^4.0.6",
     "@tailwindcss/vite": "^4.0.6",
+    "or": "^0.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.5",
