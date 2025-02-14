@@ -16,7 +16,7 @@ const Plane = ({ isRotating, ...props }) => {
   }, [actions, isRotating]);
 
   return (
-    <mesh {...props} ref={ref}>
+    <mesh {...props} ref={ref} scale={[1.2, 1.2, 1.2]}>
       <primitive object={scene} />
     </mesh>
   );
