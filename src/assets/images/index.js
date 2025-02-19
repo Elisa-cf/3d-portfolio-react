@@ -1,15 +1,8 @@
-import hero from './hero.jpg'
-import meta from './meta.png'
-import shopify from './shopify.png'
-import starbucks from './starbucks.png'
-import tesla from './tesla.png'
-import logo from './logo.svg'
+import hero from './hero.jpg';
+import logo from './logo.svg';
+import opply from './opply.png';
+import burdaforward from './burdaforward.png';
+import ierp from './ierp.png';
+import freelance from './freelance.png';
 
-export {
-    hero,
-    meta,
-    shopify,
-    starbucks,
-    tesla,
-    logo
-}
+export { hero, logo, opply, burdaforward, ierp, freelance };
