@@ -3,22 +3,27 @@ import emailjs from '@emailjs/browser';
 import Fox from '../models/Fox';
 import { Canvas } from '@react-three/fiber';
 import Loader from '../components/Loader';
+import Alert from '../components/Alert';
+import useAlert from '../hooks/useAlert';
 
 const Contact = () => {
   const formRef = useRef(null);
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [isLoading, setIsLoading] = useState(false);
+  const [currentAnimation, setCurrentAnimation] = useState('idle');
+  const { alert, showAlert, hideAlert } = useAlert();
 
   const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleFocus = e => {};
-  const handleBlur = e => {};
+  const handleFocus = e => setCurrentAnimation('walk');
+  const handleBlur = e => setCurrentAnimation('idle');
 
   const handleSubmit = e => {
     e.preventDefault();
     setIsLoading(true);
+    setCurrentAnimation('hit');
 
     emailjs
       .send(
@@ -33,24 +38,46 @@ const Contact = () => {
         },
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
       )
-      .then(() => {
-        setIsLoading(false);
-        // TODO: show success message
-        // TODO: hide an alert
-        setForm({ name: '', email: '', message: '' });
-      })
-      .catch(error => {
-        setIsLoading(false);
-        console.log(error);
-        // TODO: show error message
-      });
+      .then(
+        () => {
+          setIsLoading(false);
+          showAlert({
+            show: true,
+            text: 'Message sent successfully!',
+            type: 'success',
+          });
+
+          setTimeout(() => {
+            hideAlert(false);
+            setCurrentAnimation('idle');
+            setForm({
+              name: '',
+              email: '',
+              message: '',
+            });
+          }, [3000]);
+        },
+        error => {
+          setIsLoading(false);
+          console.error(error);
+          setCurrentAnimation('idle');
+
+          showAlert({
+            show: true,
+            text: "I didn't receive your message 😢",
+            type: 'danger',
+          });
+        }
+      );
   };
 
   return (
     <section className='relative flex lg:flex-row flex-col max-container'>
+      {alert.show && <Alert {...alert} />}
       <div className='flex-1 min-w-[50%] flex flex-col'>
         <h1 className='head-text'>Get In Touch!</h1>
         <form
+          ref={formRef}
           className='w-full flex flex-col gap-7 mt-14'
           onSubmit={handleSubmit}
         >
@@ -60,7 +87,7 @@ const Contact = () => {
               type='text'
               name='name'
               className='input w-full'
-              placeholder='John'
+              placeholder='Paquita'
               required
               value={form.name}
               onChange={handleChange}
@@ -74,7 +101,7 @@ const Contact = () => {
               type='email'
               name='email'
               className='input w-full'
-              placeholder='johndoe@gmail.com'
+              placeholder='paquitasalas@gmail.com'
               required
               value={form.email}
               onChange={handleChange}
@@ -120,6 +147,7 @@ const Contact = () => {
           <ambientLight intensity={0.5} />
           <Suspense fallback={<Loader />}>
             <Fox
+              currentAnimation={currentAnimation}
               scale={[0.5, 0.5, 0.5]}
               position={[0.5, 0.35, 0]}
               rotation={[12.6, -0.6, 0]}
