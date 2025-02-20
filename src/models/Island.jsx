@@ -56,16 +56,16 @@ const Island = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
 
       // calculate the change in the horizontal position of the mouse cursor or touch input,
       // relative to the viewport's width
-      const delta = (clientX - lastX.current) / viewport.width;
+      const delta = (clientX - lastX.current) / (viewport.width * 0.5);
 
       // Update the island's rotation based on the mouse/touch movement
-      islandRef.current.rotation.y += delta * 0.01 * Math.PI;
+      islandRef.current.rotation.y += delta * 0.02 * Math.PI;
 
       // Update the reference for the last clientX position
       lastX.current = clientX;
 
       // Update the rotation speed
-      rotationSpeed.current = delta * 0.01 * Math.PI;
+      rotationSpeed.current = delta * 0.02 * Math.PI;
     }
   };
 
