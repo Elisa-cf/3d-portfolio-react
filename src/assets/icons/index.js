@@ -16,12 +16,9 @@ import tailwindcss from './tailwindcss.svg';
 import typescript from './typescript.svg';
 import linkedin from './linkedin.svg';
 import twitter from './twitter.svg';
-import car from './car.svg';
-import estate from './estate.svg';
-import pricewise from './pricewise.svg';
-import snapgram from './snapgram.svg';
-import summiz from './summiz.svg';
-import threads from './threads.svg';
+import movie from './movie.svg';
+import invoice from './invoice.svg';
+import food from './food.svg';
 import arrow from './arrow.svg';
 import contact from './contact.svg';
 import soundon from './soundon.png';
@@ -31,6 +28,9 @@ import jest from './jest.svg';
 import agile from './agile.svg';
 import storybook from './storybook.svg';
 import flutter from './flutter.svg';
+import portfolio from './portfolio.svg';
+import monstr from './monstr.svg';
+import pizzeria from './pizzeria.svg';
 
 export {
   css,
@@ -51,12 +51,9 @@ export {
   typescript,
   linkedin,
   twitter,
-  car,
-  estate,
-  pricewise,
-  snapgram,
-  summiz,
-  threads,
+  movie,
+  portfolio,
+  food,
   arrow,
   contact,
   soundon,
@@ -66,4 +63,7 @@ export {
   agile,
   storybook,
   flutter,
+  invoice,
+  monstr,
+  pizzeria,
 };

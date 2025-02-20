@@ -16,6 +16,12 @@ import {
   storybook,
   flutter,
   contact,
+  portfolio,
+  food,
+  movie,
+  invoice,
+  monstr,
+  pizzeria,
 } from '../assets/icons';
 
 export const skills = [
@@ -172,4 +178,53 @@ export const socialLinks = [
   },
 ];
 
-export const projects = [];
+export const projects = [
+  {
+    iconUrl: portfolio,
+    theme: 'btn-back-red',
+    name: '3D Portfolio',
+    description:
+      'My portfolio website, built with React.js, Three.js, EmailJS, React Vertical Timeline Component, and TailwindCSS, showcases my skills and projects in a visually engaging way. Bringing ideas to life with interactive design! 🌟',
+    link: 'https://github.com/Elisa-cf/3d-portfolio-react',
+  },
+  {
+    iconUrl: food,
+    theme: 'btn-back-green',
+    name: 'Food Supply Platform',
+    description:
+      'Created a Vue.js supply platform connecting consumer goods brands with suppliers in the food & beverage industry. With TOKEN-based authentication, users can register, log in, and explore suppliers and quotes. 🚀',
+    link: 'https://github.com/Elisa-cf/food-supply-platform',
+  },
+  {
+    iconUrl: movie,
+    theme: 'btn-back-blue',
+    name: 'Film Hero',
+    description:
+      'Built a React.js web app that helps users find streaming, rental, or purchase options for films and TV shows based on their country with a carousel of popular movies on the home page. It also suggests similar movies when viewing details of a specific film. 📺',
+    link: 'https://github.com/Elisa-cf/BTE-film-project',
+  },
+  {
+    iconUrl: invoice,
+    theme: 'btn-back-pink',
+    name: 'Invoice Management App',
+    description:
+      'Developed a Vue.js Invoice Management website with a 3-step wizard form for easy data input and Firebase authentication for secure login. Users can create, preview, and filter invoices based on payment status, ensuring a seamless invoicing experience. 💼',
+    link: 'https://github.com/Elisa-cf/invoice-app',
+  },
+  {
+    iconUrl: monstr,
+    theme: 'btn-back-black',
+    name: 'Monstr: Monstruously Tinder!',
+    description:
+      'A Tinder for Monsters, built with Vue.js, featuring a search bar, category filters, sorting, and a favorites system to add or remove monsters. find your perfect match, and build your ultimate monster lineup. Because even monsters need love! 🧛‍♂️❤️',
+    link: 'https://github.com/Elisa-cf/monstr',
+  },
+  {
+    iconUrl: pizzeria,
+    theme: 'btn-back-yellow',
+    name: 'Pizzeria Restaurant Website',
+    description:
+      'Created a pizzeria restaurant web using React.js with a contact page that includes Google Maps implementation, menu page with filters and interactive buttons, newsLetter subscription with Formspree, among others. 🍕',
+    link: 'https://github.com/Elisa-cf/pizzeria-grande/tree/main',
+  },
+];
