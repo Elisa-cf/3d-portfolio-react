@@ -56,16 +56,16 @@ const Island = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
 
       // calculate the change in the horizontal position of the mouse cursor or touch input,
       // relative to the viewport's width
-      const delta = (clientX - lastX.current) / (viewport.width * 0.5);
+      const delta = (clientX - lastX.current) / viewport.width;
 
       // Update the island's rotation based on the mouse/touch movement
-      islandRef.current.rotation.y += delta * 0.02 * Math.PI;
+      islandRef.current.rotation.y += delta * 0.01 * Math.PI;
 
       // Update the reference for the last clientX position
       lastX.current = clientX;
 
       // Update the rotation speed
-      rotationSpeed.current = delta * 0.02 * Math.PI;
+      rotationSpeed.current = delta * 0.01 * Math.PI;
     }
   };
 
@@ -92,13 +92,19 @@ const Island = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
   };
 
   useEffect(() => {
-    // Add event listeners for pointer and keyboard events
     const canvas = gl.domElement;
+
+    // Add pointer and keyboard event listeners (unchanged)
     canvas.addEventListener('pointerdown', handlePointerDown);
     canvas.addEventListener('pointerup', handlePointerUp);
     canvas.addEventListener('pointermove', handlePointerMove);
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('keyup', handleKeyUp);
+
+    // Add touch event listeners for mobile support
+    canvas.addEventListener('touchstart', handleTouchStart);
+    canvas.addEventListener('touchmove', handleTouchMove);
+    canvas.addEventListener('touchend', handleTouchEnd);
 
     // Remove event listeners when component unmounts
     return () => {
@@ -107,8 +113,52 @@ const Island = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
       canvas.removeEventListener('pointermove', handlePointerMove);
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
+
+      canvas.removeEventListener('touchstart', handleTouchStart);
+      canvas.removeEventListener('touchmove', handleTouchMove);
+      canvas.removeEventListener('touchend', handleTouchEnd);
     };
   }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
+
+  // Handle touch start event
+  const handleTouchStart = event => {
+    event.stopPropagation();
+    event.preventDefault();
+    setIsRotating(true);
+
+    // Store the initial touch position
+    lastX.current = event.touches[0].clientX;
+  };
+
+  // Handle touch move event
+  const handleTouchMove = event => {
+    event.stopPropagation();
+    event.preventDefault();
+
+    if (isRotating) {
+      // Get the current touch position
+      const clientX = event.touches[0].clientX;
+
+      // Calculate the delta and normalize by viewport width
+      const delta = (clientX - lastX.current) / (viewport.width * 0.5);
+
+      // Apply the rotation change
+      islandRef.current.rotation.y += delta * 0.02 * Math.PI;
+
+      // Update the last touch position
+      lastX.current = clientX;
+
+      // Update the rotation speed
+      rotationSpeed.current = delta * 0.02 * Math.PI;
+    }
+  };
+
+  // Handle touch end event
+  const handleTouchEnd = event => {
+    event.stopPropagation();
+    event.preventDefault();
+    setIsRotating(false);
+  };
 
   // This function is called on each frame update
   useFrame(() => {
