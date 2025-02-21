@@ -33,7 +33,7 @@ const About = () => {
                 <img
                   src={skill.imageUrl}
                   alt={skill.name}
-                  className='w-1/2 h-1/2 object-contain '
+                  className='w-1/2 h-1/2 object-contain rounded-full'
                 />
               </div>
             </div>
@@ -72,6 +72,11 @@ const About = () => {
                   borderStyle: 'solid',
                   borderBottomColor: experience.iconBg,
                   boxShadow: 'none',
+                  transition: 'none',
+                }}
+                contentArrowStyle={{
+                  borderRight: `7px solid ${experience.iconBg}`,
+                  marginLeft: '-2px',
                 }}
               >
                 <div>
