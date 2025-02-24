@@ -1,4 +1,6 @@
-# React + Vite IN PROGRESS...
+# 3D Portfolio built with React.js and Three.js
+
+Live link: https://elisa-canyelles.netlify.app/
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
