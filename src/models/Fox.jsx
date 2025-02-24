@@ -9,13 +9,20 @@ Title: Fox
 import React, { useEffect, useRef } from 'react';
 import { useGLTF, useAnimations } from '@react-three/drei';
 
+// Import the GLTF model file
 import scene from '../assets/3d/fox.glb';
 
 const Fox = ({ currentAnimation, ...props }) => {
+  // Reference to the group containing the 3D model
   const group = useRef();
+
+  // Load the GLTF model and animations
   const { nodes, materials, animations } = useGLTF(scene);
+
+  // Extract actions from the animations
   const { actions } = useAnimations(animations, group);
 
+  // Effect to handle animation changes
   useEffect(() => {
     Object.values(actions).forEach(action => action.stop());
 

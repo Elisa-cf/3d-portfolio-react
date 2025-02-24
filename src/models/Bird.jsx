@@ -4,14 +4,19 @@ import { useFrame } from '@react-three/fiber';
 import birdScene from '../assets/3d/bird.glb';
 
 const Bird = () => {
+  // Load the GLTF model and animations
   const { scene, animations } = useGLTF(birdScene);
+  // Reference to the mesh containing the 3D model
   const birdRef = useRef();
+  // Extract actions from the animations
   const { actions } = useAnimations(animations, birdRef);
 
+  // Effect to play the animation when the component mounts
   useEffect(() => {
     actions['Take 001'].play();
   }, []);
 
+  // useFrame hook to update the bird's position and rotation on each frame
   useFrame(({ clock, camera }) => {
     // Update the Y position to simulate bird-like motion using a sine wave
     birdRef.current.position.y = Math.sin(clock.elapsedTime) * 0.2 + 2;
@@ -39,6 +44,7 @@ const Bird = () => {
 
   return (
     <mesh position={[-5, 2, 1]} scale={[0.003, 0.003, 0.003]} ref={birdRef}>
+      {/* Render the GLTF scene */}
       <primitive object={scene} />
     </mesh>
   );

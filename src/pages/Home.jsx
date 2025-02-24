@@ -15,10 +15,12 @@ const Home = () => {
   audioRef.current.volume = 0.4;
   audioRef.current.loop = true;
 
+  // State variables for rotation, current stage, and music playing status
   const [isRotating, setIsRotating] = useState(false);
   const [currentStage, setCurrentStage] = useState(1);
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
 
+  // Effect to handle music playback based on isPlayingMusic state
   useEffect(() => {
     if (isPlayingMusic) {
       audioRef.current.play();
@@ -29,6 +31,7 @@ const Home = () => {
     };
   }, [isPlayingMusic]);
 
+  // Function to adjust island properties based on screen size
   const adjustIslandForScreenSize = () => {
     let screenScale = null;
     let screenPosition = [0, -6.5, -43];
@@ -41,6 +44,7 @@ const Home = () => {
     return [screenScale, screenPosition, rotation];
   };
 
+  // Function to adjust plane properties based on screen size
   const adjustPlaneForScreenSize = () => {
     let screenScale, screenPosition;
 
@@ -54,24 +58,31 @@ const Home = () => {
     return [screenScale, screenPosition];
   };
 
+  // Destructure the returned values into islandScale, islandPosition, islandRotation
   const [islandScale, islandPosition, islandRotation] =
     adjustIslandForScreenSize();
 
+  // Destructure the returned values into planeScale and planePosition
   const [planeScale, planePosition] = adjustPlaneForScreenSize();
 
   return (
     <section className='w-full h-screen relative'>
+      {/* Display HomeInfo component at the top */}
       <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
+        {/* If currentStage is truthy, render HomeInfo component*/}
         {currentStage && <HomeInfo currentStage={currentStage} />}
       </div>
 
+      {/* Canvas for 3D rendering */}
       <Canvas
         className={`w-full h-screen bg-transparent ${
           isRotating ? 'cursor-grabbing' : 'cursor-grab'
         } `}
         camera={{ near: 0.1, far: 1000 }}
       >
+        {/* Suspense to handle lazy loading of 3D models */}
         <Suspense fallback={<Loader />}>
+          {/* Lights for the 3D scene */}
           <directionalLight position={[1, 1, 1]} intensity={2} />
           <ambientLight intensity={0.5} />
           <pointLight position={[10, 5, 10]} intensity={2} />
@@ -86,6 +97,7 @@ const Home = () => {
             groundColor='#000000'
             intensity={1}
           />
+          {/* 3D models */}
           <Bird />
           <Sky isRotating={isRotating} />
           <Island
@@ -104,6 +116,8 @@ const Home = () => {
           />
         </Suspense>
       </Canvas>
+
+      {/* Music control button */}
       <div className='absolute bottom-25 left-2 md:bottom-2 md:left-2'>
         <img
           src={!isPlayingMusic ? soundoff : soundon}

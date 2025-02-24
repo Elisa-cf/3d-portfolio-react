@@ -39,14 +39,14 @@ const Island = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
     lastX.current = clientX;
   };
 
-  // Handle pointer (mouse or touch) up event
+  // Handle pointer mouse up event
   const handlePointerUp = event => {
     event.stopPropagation();
     event.preventDefault();
     setIsRotating(false);
   };
 
-  // Handle pointer (mouse or touch) move event
+  // Handle pointer mouse move event
   const handlePointerMove = event => {
     event.stopPropagation();
     event.preventDefault();

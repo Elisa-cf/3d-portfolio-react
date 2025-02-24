@@ -7,24 +7,35 @@ import Alert from '../components/Alert';
 import useAlert from '../hooks/useAlert';
 
 const Contact = () => {
+  // Reference to the form element
   const formRef = useRef(null);
+  // State to manage form input values
   const [form, setForm] = useState({ name: '', email: '', message: '' });
+  // State to manage loading status
   const [isLoading, setIsLoading] = useState(false);
+  // State to manage the current animation of the Fox model
   const [currentAnimation, setCurrentAnimation] = useState('idle');
+  // Using the custom useAlert hook to manage alert state
   const { alert, showAlert, hideAlert } = useAlert();
 
+  // Handle input changes
   const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // Handle input focus to change animation to 'walk'
   const handleFocus = e => setCurrentAnimation('walk');
+
+  // Handle input blur to change animation to 'idle'
   const handleBlur = e => setCurrentAnimation('idle');
 
+  // Handle form submission
   const handleSubmit = e => {
     e.preventDefault();
     setIsLoading(true);
-    setCurrentAnimation('hit');
+    setCurrentAnimation('hit'); // Change animation to 'hit'
 
+    // Send email using emailjs
     emailjs
       .send(
         import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
@@ -47,6 +58,7 @@ const Contact = () => {
             type: 'success',
           });
 
+          // Hide alert and reset form after 3 seconds
           setTimeout(() => {
             hideAlert(false);
             setCurrentAnimation('idle');
@@ -73,6 +85,7 @@ const Contact = () => {
 
   return (
     <section className='relative flex lg:flex-row flex-col max-container'>
+      {/* Display alert if it is shown */}
       {alert.show && <Alert {...alert} />}
       <div className='flex-1 min-w-[50%] flex flex-col'>
         <h1 className='head-text'>Get In Touch!</h1>

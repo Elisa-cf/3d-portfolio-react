@@ -5,17 +5,15 @@ import {
   VerticalTimelineElement,
 } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
+import Header from '../components/Header';
 
 const About = () => {
   return (
     <section className='max-container'>
-      <h1 className='head-text'>
-        Hello I'm{' '}
-        <span className='blue-gradient_text font-semibold drop-shadow'>
-          Elisa
-        </span>
-      </h1>
+      {/* Heading */}
+      <Header title='Oh, hey there!' subtitle='I’m Elisa' />
 
+      {/* Introduction */}
       <div className='mt-5 flex flex-col gap-3 text-slate-500'>
         <p>
           Passionate Frontend Developer based in Spain, focused on building
@@ -23,6 +21,7 @@ const About = () => {
         </p>
       </div>
 
+      {/* Skills Section */}
       <div className='py-10 flex flex-col'>
         <h3 className='subhead-text'>My Skills</h3>
         <div className='mt-16 flex flex-wrap gap-12'>
@@ -41,6 +40,7 @@ const About = () => {
         </div>
       </div>
 
+      {/* Work Experience Section */}
       <div className='py-12'>
         <h3 className='subhead-text'>Work Experience</h3>
         <div className='mt-5 flex flex-col gap-3 text-slate-500'>
@@ -51,6 +51,7 @@ const About = () => {
           </p>
         </div>
 
+        {/* Vertical Timeline for Work Experience */}
         <div className='mt-12 flex'>
           <VerticalTimeline>
             {experiences.map((experience, index) => (
@@ -107,6 +108,7 @@ const About = () => {
       </div>
       <hr className='border-slate-200' />
 
+      {/* Call to Action */}
       <CTA />
     </section>
   );

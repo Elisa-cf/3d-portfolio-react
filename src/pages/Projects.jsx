@@ -3,17 +3,14 @@ import { Link } from 'react-router-dom';
 import CTA from '../components/CTA';
 import { projects } from '../constants';
 import { arrow } from '../assets/icons';
+import Header from '../components/Header';
 
 const Projects = () => {
   return (
     <section className='max-container'>
-      <h1 className='head-text'>
-        My{' '}
-        <span className='blue-gradient_text drop-shadow font-semibold'>
-          Projects
-        </span>
-      </h1>
-
+      {/* Heading */}
+      <Header title='My' subtitle='Projects' />
+      {/* Introduction */}
       <p className='text-slate-500 mt-2 leading-relaxed'>
         I've embarked on numerous projects throughout the years, but these are
         the ones I hold closest to my heart. They showcase my versatility with
@@ -22,6 +19,7 @@ const Projects = () => {
       </p>
 
       <div className='flex flex-wrap my-20 gap-16'>
+        {/* Projects Section */}
         {projects.map(project => (
           <div className='lg:w-[400px] w-full' key={project.name}>
             <div className='block-container w-12 h-12'>
@@ -61,7 +59,7 @@ const Projects = () => {
       </div>
 
       <hr className='border-slate-200' />
-
+      {/* Call to Action */}
       <CTA />
     </section>
   );
