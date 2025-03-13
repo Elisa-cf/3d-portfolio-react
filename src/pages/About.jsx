@@ -16,8 +16,17 @@ const About = () => {
       {/* Introduction */}
       <div className='mt-5 flex flex-col gap-3 text-slate-500'>
         <p>
-          Passionate Frontend Developer based in Spain, focused on building
-          efficient, user-friendly, and scalable applications.
+          Passionate Frontend Developer & SEO Copywriter based in Spain,
+          dedicated to crafting efficient, user-friendly, and scalable
+          applications. With a keen eye for both design and performance, I build
+          seamless digital experiences that not only look great but also drive
+          engagement.
+        </p>
+        <p>
+          As an SEO copywriter, I create compelling, search-optimized content
+          that attracts and retains users—turning clicks into conversions. My
+          expertise bridges the gap between technical excellence and persuasive
+          storytelling, ensuring every project delivers both impact and results.
         </p>
       </div>
 
@@ -45,9 +54,10 @@ const About = () => {
         <h3 className='subhead-text'>Work Experience</h3>
         <div className='mt-5 flex flex-col gap-3 text-slate-500'>
           <p>
-            I’ve had the opportunity to collaborate with diverse teams,
-            continuously refining my skills and delivering impactful solutions.
-            Here’s a snapshot of my journey:
+            After building and monetizing niche websites through my own
+            business, I transitioned into working with diverse teams as a
+            developer—expanding my expertise and contributing to innovative
+            projects. Here’s a glimpse into my journey:
           </p>
         </div>
 
