@@ -11,12 +11,20 @@ const Projects = () => {
       {/* Heading */}
       <Header title='My' subtitle='Projects' />
       {/* Introduction */}
-      <p className='text-slate-500 mt-2 leading-relaxed'>
-        I've embarked on numerous projects throughout the years, but these are
-        the ones I hold closest to my heart. They showcase my versatility with
-        frontend frameworks, with 3 built in Vue.js and 3 in React.js,
-        highlighting my ability to switch seamlessly between both technologies.
-      </p>
+      <div className='text-slate-500 mt-2 leading-relaxed flex flex-col gap-3'>
+        <p>
+          I've embarked on numerous projects throughout the years, but these are
+          the ones I hold closest to my heart. They showcase my versatility with
+          frontend frameworks, with 3 built in Vue.js and 3 in React.js,
+          highlighting my ability to switch seamlessly between both
+          technologies.
+        </p>
+        <p>
+          Additionally, my experience in SEO copywriting and creating niche
+          websites further strengthens my skill set, blending technical
+          expertise with content-driven strategies to achieve optimal results.
+        </p>
+      </div>
 
       <div className='flex flex-wrap my-20 gap-16'>
         {/* Projects Section */}
@@ -41,11 +49,16 @@ const Projects = () => {
               <div className='mt-5 flex items-center gap-2 font-poppins'>
                 <Link
                   to={project.link}
-                  target='_blank'
-                  rel='noopener noreferrer'
+                  target={project.link.startsWith('http') ? '_blank' : '_self'}
+                  rel={
+                    project.link.startsWith('http') ? 'noopener noreferrer' : ''
+                  }
                   className='font-semibold text-blue-600'
                 >
-                  Live Link
+                  {project.name ===
+                  'Founder, SEO-Copywriter & WordPress Developer'
+                    ? 'More Info'
+                    : 'Live Link'}
                 </Link>
                 <img
                   src={arrow}

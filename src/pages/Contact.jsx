@@ -89,9 +89,15 @@ const Contact = () => {
       {alert.show && <Alert {...alert} />}
       <div className='flex-1 min-w-[50%] flex flex-col'>
         <h1 className='head-text'>Get In Touch!</h1>
+        <p className='text-slate-500 mt-2 leading-relaxed'>
+          Whether you're looking for a frontend developer to create seamless,
+          user-friendly interfaces or need to SEO-optimize your website with
+          impactful content, let's connect! I'm confident we can collaborate and
+          find the best approach that benefits both of us.
+        </p>
         <form
           ref={formRef}
-          className='w-full flex flex-col gap-7 mt-14'
+          className='w-full flex flex-col gap-7 mt-12'
           onSubmit={handleSubmit}
         >
           <label className='text-black-500 font-semibold'>

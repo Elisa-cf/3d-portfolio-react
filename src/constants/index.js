@@ -21,6 +21,7 @@ import {
   movie,
   invoice,
   monstr,
+  business,
   pizzeria,
 } from '../assets/icons';
 
@@ -194,8 +195,8 @@ export const projects = [
     theme: 'btn-back-green',
     name: 'Food Supply Platform',
     description:
-      'Created a Vue.js supply platform connecting consumer goods brands with suppliers in the food & beverage industry. With TOKEN-based authentication, users can register, log in, and explore suppliers and quotes. 🚀',
-    link: 'https://github.com/Elisa-cf/food-supply-platform',
+      'Created a full-stack supply platform connecting consumer goods brands with food & beverage suppliers. Frontend in Vue 3, backend with Node, Express, and SQL, featuring token-based authentication for registration, login, and supplier/quote exploration with pagination. 🚀',
+    link: 'https://github.com/Elisa-cf/full-stack-food-supply-platform',
   },
   {
     iconUrl: movie,
@@ -228,5 +229,13 @@ export const projects = [
     description:
       'Created a pizzeria restaurant web using React.js with a contact page that includes Google Maps implementation, menu page with filters and interactive buttons, newsLetter subscription with Formspree, among others. 🍕',
     link: 'https://github.com/Elisa-cf/pizzeria-grande/tree/main',
+  },
+  {
+    iconUrl: business,
+    theme: 'btn-back-red',
+    name: 'Founder, SEO-Copywriter & WordPress Developer',
+    description:
+      'I ran my own business, building and monetizing 70+ niche websites, authoring 1,000+ articles, and leading a team to drive SEO and revenue growth. I optimized performance using tools like Google Analytics and Ahrefs, focusing on speed, responsiveness, and user experience through WordPress. Feel free to contact me and check out my work in this field. 👩‍💻',
+    link: '/contact',
   },
 ];

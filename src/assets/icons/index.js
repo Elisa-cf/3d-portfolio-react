@@ -31,6 +31,7 @@ import flutter from './flutter.svg';
 import portfolio from './portfolio.svg';
 import monstr from './monstr.svg';
 import pizzeria from './pizzeria.svg';
+import business from './business.svg';
 
 export {
   css,
@@ -66,4 +67,5 @@ export {
   invoice,
   monstr,
   pizzeria,
+  business,
 };
